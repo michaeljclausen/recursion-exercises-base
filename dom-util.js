@@ -1,15 +1,16 @@
 
 const visitAllNodes = function(node, callback) {
-  callback();
-  if(node.size > 1) {
-    let children = node.childNodes;
+  callback(node);
+  let children = node.childNodes;
+  if (children.length > 0) {
     children.forEach(el => visitAllNodes(el, callback));
   }
 };
 
 const flattenTreeToArray = function(node) {
-  // Hint: Use visitAllNodes()
-  // Your code here
+  let arr = [];
+  visitAllNodes(node, el => arr.push(el));
+  return arr;
 };
 
 module.exports = {
