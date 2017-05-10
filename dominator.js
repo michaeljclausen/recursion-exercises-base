@@ -13,7 +13,18 @@ const getElementById = function(root, id) {
 };
 
 const getElementsByClassName = function(root, className) {
-  // Your code here
+  let arr = flattenTreeToArray(root);
+  let results = [];
+  arr.forEach(el => {
+    if (el.classList) {
+      for (let name in el.classList) {
+        if (el.classList[name] === className) {
+          results.push(el);
+        }
+      }
+    }
+  });
+  return results;
 };
 
 const getElementsByTagName = function(root, tagName) {
