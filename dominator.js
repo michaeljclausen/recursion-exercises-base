@@ -28,7 +28,14 @@ const getElementsByClassName = function(root, className) {
 };
 
 const getElementsByTagName = function(root, tagName) {
-  // Your code here
+  let arr = flattenTreeToArray(root);
+  let results = [];
+  arr.forEach(el => {
+    if (el.tagName === tagName) {
+      results.push(el);
+    }
+  });
+  return results;
 };
 
 module.exports = {
